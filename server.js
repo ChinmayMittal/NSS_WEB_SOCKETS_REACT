@@ -19,70 +19,70 @@ var stock_data ={
 }
 io.on('connection' , socket => {
 
-   
         console.log('web socket connection established ' ) ; 
-  
-        var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=FB&interval=1min&apikey=' + process.env.API_KEY;
+        setInterval( function(){
+          var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=FB&interval=1min&apikey=' + process.env.API_KEY;
         
-        request.get({
-            url: url,
-            json: true,
-            headers: {'User-Agent': 'request'}
-          }, (err, res, data) => {
-            if (err) {
-              console.log('Error:', err);
-            } else if (res.statusCode !== 200) {
-              console.log('Status:', res.statusCode);
-            } else {
-              // data is successfully parsed as a JSON object:
-            //   console.log(data );
-            if (!("Note" in data)) console.log(data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close']);
-            if (!("Note" in data))stock_data.FB = data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close'] ;
-              console.log(stock_data) ; 
-              socket.emit('stock' , stock_data ) ; 
-            }
-        });
-
-        url= "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=" + process.env.API_KEY ;        
-       request.get({
-            url: url,
-            json: true,
-            headers: {'User-Agent': 'request'}
-          }, (err, res, data) => {
-            if (err) {
-              console.log('Error:', err);
-            } else if (res.statusCode !== 200) {
-              console.log('Status:', res.statusCode);
-            } else {
-              // data is successfully parsed as a JSON object:
-            //   console.log(data );
-            if (!("Note" in data)) console.log(data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close']);
-            if (!("Note" in data)) stock_data.M = data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close'] ;
-              console.log(stock_data) ;
-              socket.emit('stock' , stock_data ) ;  
-            }
-        });
-
-        url= "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=1min&apikey=" + process.env.API_KEY ; 
-        request.get({
-            url: url,
-            json: true,
-            headers: {'User-Agent': 'request'}
-          }, (err, res, data) => {
-            if (err) {
-              console.log('Error:', err);
-            } else if (res.statusCode !== 200) {
-              console.log('Status:', res.statusCode);
-            } else {
-              // data is successfully parsed as a JSON object:
-            //   console.log(data );
-            if (!("Note" in data))console.log(data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close']);
-            if (!("Note" in data)) stock_data.G = data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close'] ; 
-              console.log(stock_data) ;
-              socket.emit('stock' , stock_data ) ; 
-            }
-        });
-
+          request.get({
+              url: url,
+              json: true,
+              headers: {'User-Agent': 'request'}
+            }, (err, res, data) => {
+              if (err) {
+                console.log('Error:', err);
+              } else if (res.statusCode !== 200) {
+                console.log('Status:', res.statusCode);
+              } else {
+                // data is successfully parsed as a JSON object:
+              //   console.log(data );
+              if (!("Note" in data)) console.log(data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close']);
+              if (!("Note" in data))stock_data.FB = data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close'] ;
+                console.log(stock_data) ; 
+                socket.emit('stock' , stock_data ) ; 
+              }
+          });
+  
+          url= "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=" + process.env.API_KEY ;        
+         request.get({
+              url: url,
+              json: true,
+              headers: {'User-Agent': 'request'}
+            }, (err, res, data) => {
+              if (err) {
+                console.log('Error:', err);
+              } else if (res.statusCode !== 200) {
+                console.log('Status:', res.statusCode);
+              } else {
+                // data is successfully parsed as a JSON object:
+              //   console.log(data );
+              if (!("Note" in data)) console.log(data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close']);
+              if (!("Note" in data)) stock_data.M = data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close'] ;
+                console.log(stock_data) ;
+                socket.emit('stock' , stock_data ) ;  
+              }
+          });
+  
+          url= "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=GOOGL&interval=1min&apikey=" + process.env.API_KEY ; 
+          request.get({
+              url: url,
+              json: true,
+              headers: {'User-Agent': 'request'}
+            }, (err, res, data) => {
+              if (err) {
+                console.log('Error:', err);
+              } else if (res.statusCode !== 200) {
+                console.log('Status:', res.statusCode);
+              } else {
+                // data is successfully parsed as a JSON object:
+              //   console.log(data );
+              if (!("Note" in data))console.log(data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close']);
+              if (!("Note" in data)) stock_data.G = data['Time Series (1min)'][data[ 'Meta Data']['3. Last Refreshed']]['4. close'] ; 
+                console.log(stock_data) ;
+                socket.emit('stock' , stock_data ) ; 
+              }
+          });
+        }, 10000) ; 
+ 
     
 
     
