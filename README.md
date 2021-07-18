@@ -15,3 +15,4 @@ Recruitment assignment
 
 ![Sample](https://github.com/ChinmayMittal/NSS_WEB_SOCKETS_REACT/blob/main/Screenshot%20(748).png?raw=true)
 
+### To run the app set-up two command line terminals in the main directory run the server by npm start and on the other terminal move inside the stocks_charts folder and run the react-app with npm start
