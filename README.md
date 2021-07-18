@@ -15,4 +15,6 @@ Recruitment assignment
 
 ![Sample](https://github.com/ChinmayMittal/NSS_WEB_SOCKETS_REACT/blob/main/Screenshot%20(748).png?raw=true)
 
-### To run the app set-up two command line terminals in the main directory run the server by npm start and on the other terminal move inside the stocks_charts folder and run the react-app with npm start
+### To run the app set-up two command line terminals
+### In the main directory run the server by npm start and on the other terminal move inside the stocks_charts folder(client side) and run the react-app with npm start
+### I have used setInterval to ensure that the call request of the API is not violated. One has to use a free API Key that the service provides
