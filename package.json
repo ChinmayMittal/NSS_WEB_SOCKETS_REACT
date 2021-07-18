@@ -1,0 +1,19 @@
+{
+  "name": "nss_websockets",
+  "version": "1.0.0",
+  "description": "assignment for tech recruitment",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Chinmay Mittal",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "request": "^2.88.2",
+    "socket.io": "^4.1.3"
+  }
+}
